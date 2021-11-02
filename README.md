@@ -1,2 +1,2 @@
 # django-ChildCareApp
-My First 
+My First Django Project
