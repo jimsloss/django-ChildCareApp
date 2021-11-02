@@ -1,0 +1,76 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    Holidays {{nextyear}}
+{% endblock %}
+
+{% block page %}
+    Holidays {{nextyear}}
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">This Week</a></li>
+    <li class="nav-item"><a class="nav-link" href="/kids">Kids</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Documents</a></li>
+    <li class="nav-item"><a class="nav-link" href="/otherServices">Other Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+
+{% endblock %}
+
+{% block content %}
+<center>
+  <h2> 
+    <form action="{% url 'holidays' %}" method="post">
+      {% csrf_token %}
+        <button class="btn btn-primary" type="submit" name = "year" value = "Year" style ="margin:20px;" >{{year}}</button>
+        {{nextyear}} 
+      </form>
+    
+  </h2>
+</center>
+
+    <thead class = "thead-light">
+        <table class="table table-striped">
+            <thead>
+                <tr>                   
+                          
+                          <th scope="col">HOLIDAY</th>
+                          <th scope="col">FROM</th>
+                          <th scope="col">TO</th>
+                          
+                    
+                </tr>
+            </thead>
+    
+      <tbody>
+
+              {% for holiday in hols %}
+              {% if holiday.datefrom.year == nextyear %}
+              <tr>
+                <td>{{ holiday.holiday }}</td>
+                <td>{{ holiday.datefrom }}</td>
+                <td>{{ holiday.dateto }}</td>
+              </tr>
+              {% endif %}
+              {% endfor %} 
+    
+      </tbody>
+    
+    </table>
+
+    <br><br>
+
+    <form action="{% url 'holidaysUpdate' %}" method="post">
+      {% csrf_token %}
+      <p align ="center">
+        <button class="btn btn-primary" type="submit" name = "submit" value = "Update" style ="margin:20px;">Update Holidays</button> 
+      </p>
+    </form>
+
+{% endblock %}
+
+
+

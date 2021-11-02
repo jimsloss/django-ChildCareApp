@@ -1,0 +1,29 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block page %}
+    Log In
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">TempHome</a></li>
+    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+{% endblock %}
+
+{% block content %}
+<form action="/login" method="post">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="password" placeholder="Password" type="password">
+    </div>
+    <button class="btn btn-primary" type="submit" name = "submit" value = "Log In">Log In</button> <br> <br>
+    <button class="btn btn-secondary" type="submit" name = "submit" value = "Change Password">Change Password</button><br><br>
+    <button class="btn btn-secondary" type="submit" name = "newuser" value = "New User">New User</button>
+</form>
+
+{% endblock %}

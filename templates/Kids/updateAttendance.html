@@ -1,0 +1,94 @@
+
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE CHILD ATTENDANCE
+{% endblock %}
+
+{% block page %}
+    UPDATE CHILD ATTENDANCE
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'updateChildComplete' %}" method="post" >
+        {% csrf_token %}
+
+        <input type="hidden" id="id" name="childID" value= "{{ id }}">
+
+            <h4 style="color:darkred; font-weight:bold;">UPDATE ATTENDANCE</h4><hr><br>
+            
+             
+                <label class="labels">Attendance Type:</label>
+            <select id="type" name="childtype">
+                <option value="Full Time" selected>Full Time</option>
+                <option value="Part time">Part Time</option>
+                <option value="After School">After School</option>
+                <option value="Under 5">Under 5</option>
+                <option value="Sat Only">Sat Only</option>
+              </select><br>
+            
+              <hr>
+            
+               
+              <div style="margin-left: 60px; margin-right: 60px;">
+                  
+                  <table class="table table-bordered"> 
+                    <thead>
+                        <tr> <th>DAY</th> <th>START</th> <th>FINISH</th> </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td> 
+                            <td><input name="MonS" type="time" style="width:100px" value="{{mondayS|time:'H:i' }}"/></td> 
+                            <td><input name="MonF" type="time" style="width:100px"value="{{mondayF|time:'H:i' }}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td> 
+                            <td><input name="TueS" type="time" style="width:100px"value="{{tuesdayS|time:'H:i' }}"/></td> 
+                            <td><input name="TueF" type="time" style="width:100px"value="{{tuesdayF|time:'H:i' }}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td> 
+                            <td><input name="WedS" type="time" style="width:100px"value="{{wednesdayS|time:'H:i' }}"/></td> 
+                            <td><input name="WedF" type="time" style="width:100px"value="{{wednesdayF|time:'H:i' }}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td> 
+                            <td><input name="ThuS" type="time" style="width:100px"value="{{thursdayS|time:'H:i' }}"/></td> 
+                            <td><input name="ThuF" type="time" style="width:100px"value="{{thursdayF|time:'H:i' }}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td> 
+                            <td><input name="FriS" type="time" style="width:100px"value="{{fridayS|time:'H:i' }}"/></td> 
+                            <td><input name="FriF" type="time" style="width:100px"value="{{fridayF|time:'H:i' }}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td> 
+                            <td><input name="SatS" type="time" style="width:100px"value="{{saturdayS|time:'H:i' }}"/></td> 
+                            <td><input name="SatF" type="time" style="width:100px"value="{{saturdayF|time:'H:i' }}"/></td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                
+              </div>
+              <br>
+              
+             <!-- <br>
+              <button style="margin-left: 25%" class="btn btn-primary">Update Details</button>
+              <br><br>-->
+      
+
+                
+            <button class="btn btn-primary" type="submit" value = "Login">Submit</button> 
+            <button class="btn btn-primary" type="submit" value = "Cancel">Cancel</button> <br> <br>
+            <br> <br>
+            
+    </form>
+</div>
+
+
+{% endblock %}

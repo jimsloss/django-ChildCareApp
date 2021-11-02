@@ -1,0 +1,113 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    This Week
+{% endblock %}
+
+{% block page %}
+    This Week
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/kids">Kids</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Documents</a></li>
+    <li class="nav-item"><a class="nav-link" href="/otherServices">Other Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+
+{% endblock %}
+
+{% block content %}
+
+<body>  
+
+      <h4 style="text-align: center;"> 
+        
+        <!--<p></p>Date: <input type="text" style="text-align:center;" id="datepicker" value = "{{start}}"></p>-->
+        <p>WEEKLY VIEW OF NUMBERS OF CHILDREN IN</p>
+        
+      </h4>
+      
+      <br>
+      <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">8 - 9</th>
+                    <th scope="col">9 - 10</th>
+                    <th scope="col">10 - 11</th>
+                    <th scope="col">11 - 12</th>
+                    <th scope="col">12 - 1</th>
+                    <th scope="col">1 - 2</th>
+                    <th scope="col">2 - 3</th>
+                    <th scope="col">3 - 4</th>
+                    <th scope="col">4 - 5</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+
+              <tr>
+                
+                <!--show all children whos is in at these times-->
+                <td id ="idcolumn"><strong>Monday</strong></td>
+                {% for key, total in monday.items %}
+                <td>{{total}}</td> <!--<td>3</td> <td>2</td> <td>3</td> <td>3</td> <td>4</td>-->
+                {%  endfor %}
+              </tr>
+              <tr>
+                <td id ="idcolumn"><strong>Tuesday</strong></td>
+                {% for key, total in tuesday.items %}
+                <td>{{total}}</td> <!--<td>3</td> <td>2</td> <td>3</td> <td>3</td> <td>4</td>-->
+                {%  endfor %}
+              </tr>
+              <tr>
+                <td id ="idcolumn"><strong>Wednesday</strong></td>
+                {% for key, total in wednesday.items %}
+                <td>{{total}}</td> <!--<td>3</td> <td>2</td> <td>3</td> <td>3</td> <td>4</td>-->
+                {%  endfor %}
+              </tr>
+              <tr>
+                <td id ="idcolumn"><strong>Thursday</strong></td>
+                {% for key, total in thursday.items %}
+                <td>{{total}}</td> <!--<td>3</td> <td>2</td> <td>3</td> <td>3</td> <td>4</td>-->
+                {%  endfor %}
+              </tr>
+              <tr>
+                <td id ="idcolumn"><strong>Friday</strong></td>
+                {% for key, total in friday.items %}
+                <td>{{total}}</td> <!--<td>3</td> <td>2</td> <td>3</td> <td>3</td> <td>4</td>-->
+                {%  endfor %}
+              </tr>
+              <tr>
+                <td id ="idcolumn"><strong>Saturday</strong></td>
+                {% for key, total in saturday.items %}
+                <td>{{total}}</td> <!--<td>3</td> <td>2</td> <td>3</td> <td>3</td> <td>4</td>-->
+                {%  endfor %}
+              </tr>
+                 
+            </tbody>
+       
+        </table>
+
+    <form action="{% url 'thisWeek' %}" method="post">
+          {% csrf_token %}
+        
+        <!--dictionary types-->
+        <input type="hidden" id="vaccancy" name="vaccancy" value="vaccancy">
+        
+    
+    <p align ="center">
+    <button class="btn btn-primary" type="submit" name = "vaccancies" value = "Vaccancies" style ="margin:20px;">VACCANCIES</button>
+    </p>
+    </form>
+
+
+ <div align = "right">Note: Total allowed = 6 ( including only 1 under 5, and only 1 under 1)</div>
+
+
+  </body>
+{% endblock %}

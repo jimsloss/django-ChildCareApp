@@ -1,0 +1,22 @@
+.bg{
+    background: url("../images/creche.jpg") no-repeat;
+    width: 100%;
+    right: 100vh;
+    background-size: 100%;
+}
+
+.form-container{
+    position: absolute;
+    top: 15vh;
+    background: #ffff;
+    padding:30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+
+@media only screen and (max-width: 678px) {
+    .bg {
+      background-size: 200px;
+    }
+  }

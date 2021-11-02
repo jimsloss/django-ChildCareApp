@@ -1,0 +1,167 @@
+{% extends "main_layout.html" %}
+
+<!--These are inherited from main-->
+{% block title %} {% endblock %}
+
+{% block page %} {% endblock %}
+
+{% block menuoptions%} {% endblock %}
+
+{% block content %}
+
+<!--from here is vtabs specific-->
+<body>  
+
+  <!--if used, this will be displayed above the tabs-->
+  {% block subtitle %}  {% endblock %}
+
+  <!--text displayed on the tabs themselves-->
+  <div class="tab">
+    <button class="tablinks" onclick="openContent(event, 'Main')" id="defaultOpen">{% block tab1 %}{% endblock %}</button>
+    <button class="tablinks" onclick="openContent(event, 'tab2')">{% block tab2 %}{% endblock %} </button>
+    <button class="tablinks" onclick="openContent(event, 'tab3')">{% block tab3 %}{% endblock %}</button>
+    <button class="tablinks" onclick="openContent(event, 'tab4')">{% block tab4 %}{% endblock %}</button>
+
+  </div>
+
+  <!--if used, this will be on main window, before a tab is clicked on-->
+  {% block mainphoto %} {% endblock %}
+
+  <!--the content displayed within each tabs -->
+  
+
+  <!-- TAB 1 -->
+  <div id="Main" class="tabcontent"> <!-- style = "background-color:blueviolet">  -->
+    
+      <h3>{% block tab1title %} {% endblock %}</h3> 
+      <hr>
+      
+      
+      <div class="row"> <!-- style = "background-color:darkkhaki"> -->
+        <!--left-->
+        <div class="col">
+          {% block mainleft %} {% endblock %}
+        </div>
+        <!--middle-->
+        <div class="col">
+          {% block mainmiddle %} {% endblock %}
+        </div>
+        <!--right-->
+        <div class="col">
+          {% block mainright %} {% endblock %}
+        </div>
+      </div>
+      
+      <div class = "row"> <!-- style = "background-color:crimson"> -->
+        <!--update button-->
+         {% block updatebutton %}{% endblock %}
+      </div>
+
+    <br><br>
+  </div>
+
+
+ <!-- TAB 2 --> 
+  <div id="tab2" class="tabcontent"> <!-- style = "background-color:blueviolet"> --> 
+    
+    
+    
+      <h3>{% block tab2title %}{% endblock %}</h3> <hr>
+    
+      <div class="row"> <!-- style = "background-color: darkkhaki"> -->
+        <!--left-->
+        <div class="col" id="defaultOpen">
+          {% block tab2left %}{% endblock %}
+        </div>
+        <!--middle-->
+        <div class="col">
+          {% block tab2middle %}{% endblock %}
+        </div>
+        <!--right-->
+        <div class="col">
+          {% block tab2right %}{% endblock %}
+        </div>
+      </div>     
+      
+      <div class = "row"> <!-- style = "background-color:crimson"> -->
+        <!--update button-->
+         {% block updatebutton2 %}{% endblock %}
+      </div>
+      
+    
+    <br><br>
+  </div>
+   
+      
+  <!-- TAB 3 -->
+  <div id="tab3" class="tabcontent"> <!--  style = "background-color:blueviolet">  -->
+    
+    <div class="container">
+    
+      <h3>{% block tab3title %}{% endblock %}</h3> <hr>
+    
+      <div class="row"> <!-- style = "background-color:darkkhaki"> -->
+        <!--left-->
+        <div class="col" id="defaultOpen">
+          {% block tab3left %}{% endblock %}
+        </div>
+        <!--middle-->
+        <div class="col">
+          {% block tab3middle %}{% endblock %}
+        </div>
+        <!--right-->
+        <div class="col">
+          {% block tab3right %}{% endblock %}
+        </div>
+      </div>     
+      
+      <div class = "row"> <!-- style = "background-color:crimson"> -->
+        <!--update button-->
+         {% block updatebutton3 %}{% endblock %}
+      </div>
+      
+    </div>
+    <br><br>
+  </div>
+
+  <!-- TAB 4 -->
+  <div id="tab4" class="tabcontent"> <!--  style = "background-color:blueviolet">  -->
+    
+    <div class="container">
+    
+      <h3>{% block tab4title %}{% endblock %}</h3> <hr>
+    
+      <div class="row"> <!-- style = "background-color:darkkhaki"> -->
+        <!--left-->
+        <div class="col" id="defaultOpen">
+          {% block tab4left %}{% endblock %}
+        </div>
+        <!--middle-->
+        <div class="col">
+          {% block tab4middle %}{% endblock %}
+        </div>
+        <!--right-->
+        <div class="col">
+          {% block tab4right %}{% endblock %}
+        </div>
+      </div>     
+      
+      <div class = "row"> <!-- style = "background-color:crimson"> -->
+        <!--update button-->
+         {% block updatebutton4 %}{% endblock %}
+      </div>
+      
+    </div>
+    <br><br>
+  </div>
+  
+
+</body>
+
+
+
+{% endblock %}
+
+
+
+

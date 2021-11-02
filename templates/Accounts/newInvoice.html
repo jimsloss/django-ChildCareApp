@@ -1,0 +1,67 @@
+{% extends "main_layout.html" %}
+
+{% block title %}   NEW INVOICE         {% endblock %}
+{% block page %}    CREATE AN INVOICE   {% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+  
+  <form action="{% url 'newInvoice' %}" method="post">
+    {% csrf_token %}
+    
+    <h4 style="color:darkred; font-weight:bold;">NEW INVOICE</h4><hr><br>
+    
+    <label class="menulabels">NAME:</label>
+    
+    <select id= "selectParent" name= "selectParent">
+      {% for parent in parents %} <!--parents is full list of unique parent objects-->
+        <option value= "{{ parent.id }} ">{{ parent.firstname }} {{ parent.surname }}</option>
+      {% endfor %}  
+    </select>
+              
+    <br>
+    <br>
+
+    <label class="menulabels">MONTH:</label>
+    
+    <select id="month" name="month">
+      <option value="January" selected>January</option>
+      <option value="February">February</option>
+      <option value="March">March</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
+                
+    <br>
+    <br>
+
+    <label class="menulabels">YEAR:</label>
+   
+    <select id="year" name="year">
+      <option value="2021" selected>2021</option>
+      <option value="2022">2022</option>
+    </select>
+    
+    <br>
+    <br>
+        
+    <input type="hidden" name = "page" value="NewInvoicePage1">
+              
+    <button class="btn btn-primary"  style="margin-right: 30px" type="submit" value = "cancel" name="cancel">CANCEL</button> 
+    <button class="btn btn-primary" type="submit" value = "next">NEXT</button> 
+            
+    <br>
+    <br>
+    
+  </form>
+    {% endblock %}
+
+</div>

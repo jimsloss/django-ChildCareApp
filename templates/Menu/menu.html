@@ -1,0 +1,71 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    Menu
+{% endblock %}
+
+{% block page %}
+    Menu
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">This Week</a></li>
+    <li class="nav-item"><a class="nav-link" href="/kids">Kids</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Documents</a></li>
+    <li class="nav-item"><a class="nav-link" href="/otherServices">Other Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+
+{% endblock %}
+
+{% block content %}
+<br>
+
+<!--<table class="table">
+
+    <thead class = "thead-light"> -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Monday</th>
+                    <th scope="col">Tuesday</th>
+                    <th scope="col">Wednesday</th>
+                    <th scope="col">Thursday</th>
+                    <th scope="col">Friday</th>
+                    <th scope="col">Saturday</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr>
+                    <td id="idcolumn"><strong>Morning</strong></td>
+                    {% for meal in morning_meals %}
+                        <td>{{ meal.content}}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td id="idcolumn"><strong>Lunch</strong></td>
+                    {% for meal in lunch_meals %}
+                        <td>{{ meal.content }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td id="idcolumn"><strong>Afternoon</strong></td>
+                    {% for meal in afternoon_meals %}
+                        <td>{{ meal.content }}</td>
+                    {% endfor %}
+                </tr>
+                
+            </tbody>
+        </table>
+    <form action="{% url 'updatemenu' %}" method="post">
+            {% csrf_token %}
+            
+        <p align ="center">
+            <button class="btn btn-primary" type="submit" name = "submit" value = "Update" style ="margin:20px;">Update Menu</button> 
+        </p>
+    </form>
+{% endblock %}

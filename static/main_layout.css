@@ -1,0 +1,334 @@
+/* in main_layout.html */
+
+    #maintitle 
+    {
+        color: #006699; 
+        font-size: 35px;
+        text-align:center;
+        background:white;
+        line-height: 60px;
+    }
+
+    
+
+    body 
+    {
+        /*background-color: #12c9c0;*/
+        /*background-color: #00dcbe;*/
+        /*background-color: gainsboro;*/
+        background-color: #c5cbe3;
+
+        font-family: montserrat;
+    }
+
+    * /* this means - all elements */
+    {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    nav /* main-layout.html -nav bar colour*/
+    {
+        background: #006699;
+        height: 50px;
+        width: 100%;
+    }
+
+label.logo
+{
+    color: white;
+    font-size: 35px;
+    line-height: 50px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+
+nav ul
+{
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li
+{
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 5px;
+}
+
+nav ul li a
+{
+    color: white;
+    font-size:17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+a.active,a:hover
+{
+    background: #1b9bff;
+    transition: .5s;
+}
+
+.checkbtn
+{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check
+{
+    display: none;
+}
+
+@media (max-width: 952px)
+{
+    label.logo
+    {
+        font-size: 30px;
+        padding-left: 50px;  /*here at 5:18*/
+    }
+    nav ul li a
+    {
+        font-size: 16px;
+    }
+    @media(max-width: 858px)
+    {
+        .checkbtn
+        {
+            display: block;
+        }
+        ul
+        {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #2c3e50;
+            top: 80px;
+            left: -100%;
+            text-align: center;
+            transition: all .5s;
+        }
+        nav ul li
+        {
+            display: block;
+            margin: 50px 0;
+            line-height: 30px;
+        }
+        nav ul li a
+        {
+            font-size: 20px;
+        }
+        a:hover,a.active
+        {
+            background: none;
+            color: #0082e6;
+        }
+        #check:checked ~ ul
+        {
+            left: 0;
+        }
+    }
+    section
+    {
+       /* background: url(b1.jpg) no-repeat;*/
+        background-size: cover;
+        height: calc(100vh - 80px);
+    }
+}
+/*
+#bg{
+    background: url("images/creche.jpg");
+    background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}*/
+
+
+
+/*.tab { margin-left: 100px; }*/
+
+
+/* log in page */
+
+.loginbox
+{
+    text-align:center;
+    margin-left: 20%;
+    margin-right: 20%;
+    height:auto;
+    padding: 2%;
+    background: white;
+    border-style: solid;
+}
+
+.testheader{
+    color:darkred;
+    text-align:center;
+}
+
+
+#userloggedin{
+    color: darkgray; 
+    font-size: 15px;
+    text-align:right;
+    background:white;
+    padding-right: 10px;
+}
+
+table,
+thead,
+tr,
+tbody,
+th,
+td {
+  text-align: center;
+  vertical-align: center;
+}
+
+th{
+    color: white;
+    font-weight: lighter;
+    background-color: cadetblue;
+}
+
+tbody{
+    background: gainsboro;
+}
+
+#maintable th{
+    color: #006699; 
+    font-weight: bold;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+
+#maintable tbody{
+
+    background: transparent;
+    border-top: transparent;
+    font-size: 26px;
+}
+
+#maintable td{
+    align-content: center;
+}
+
+#idcolumn{
+    background-color:cadetblue;
+}
+
+#mainpagelinks{
+    color: red;
+    /*text-indent: 10%;*/
+}
+
+#noborder{
+    border: 0;
+}
+
+#insurance{
+background: transparent;   
+padding: 5%;
+border: none;
+}
+
+#insurance td{
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.labels{
+    width: 150px; 
+    text-align: left;
+    color: blue;
+    font-weight: bold;
+}
+
+.labels2{
+    width: 90px; 
+    text-align: left;
+    color: blue;
+    font-weight: bold;
+    padding:30px;
+    height: 50px;
+}
+
+.childLabels{
+    width: 120px; 
+    text-align: left;
+    color: blue;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.childInput{
+    width: 150px; 
+    text-align: center;
+    color: darkgray;
+    font-weight: bold;
+}
+
+
+.childAddress{
+    width: 250px; 
+    text-align: center;
+    color: darkgray;
+    font-weight: bold;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.menulabels{
+    padding-right: 20px;
+    align-content: center;
+    text-align: left;
+    color: blue;
+    font-weight: bold;
+}
+
+
+/*
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color:  #c5cbe3;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+*/
+
+#newInvoiceTable th{
+        color: black;
+        font-weight: bold;
+        background-color: white;
+    }   
+
+#newInvoiceTable tr{
+        color: black;
+        background-color: white;
+    }   
+
+
+

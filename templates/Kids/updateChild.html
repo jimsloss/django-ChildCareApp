@@ -1,0 +1,60 @@
+
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE CHILD
+{% endblock %}
+
+{% block page %}
+    UPDATE CHILD
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+
+    <form action="{% url 'updateChildPersonal' %}" method="post" >
+        {% csrf_token %}
+
+        <input type="hidden" id="id" name="childID" value= "{{ id }}">
+
+            <h4 style="color:darkred; font-weight:bold;">UPDATE CHILDS DETAILS</h4><hr><br>
+            
+            <label class="childLabels">First Name:</label>
+            <input class ="childInput" name="firstname"  value = "{{ child.firstname }}" type="text"/>
+
+            <label class="childLabels">Surname:</label>
+            <input class ="childInput" name="surname" value = "{{ child.surname }}" type="text"/><br><br>
+
+            <label class="childLabels">Date Of Birth:</label>
+            <input class ="childInput"name="dob" type="date" ivalue="{{ child.dateofbirth }}"/><br><br> <!-- "Oct. 7, 2020"  to  "2013-01-08" -->
+
+            <label class="childLabels">Gender:</label>
+            <select  class ="childInput" id="gender" name="gender" value="{{ child.childgender }}">
+                <option value="Male" >Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select><br><br>
+            
+            <label class="labels">Address:</label><br>
+            <textarea class ="childAddress"name="address" rows="3">{{ child.address }}</textarea><br><br>
+            
+            <hr>
+            
+            <br>
+            <label style ="color:darkred; font-weight:bold;">Add/Change Photo:     </label><br>
+            <input id="photo" type="file" style="color:transparent; margin-left:200px;" class="" name="photo">
+            <br><br><br>                
+            
+            <button class="btn btn-primary" type="submit" value = "Cancel">CANCEL</button> 
+            <button class="btn btn-primary" type="submit" value = "Login">NEXT</button> <br> <br>
+            
+            <br> <br>
+            
+    </form>
+</div>
+
+
+{% endblock %}

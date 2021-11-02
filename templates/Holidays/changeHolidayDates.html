@@ -1,0 +1,34 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE HOLIDAY
+{% endblock %}
+
+{% block page %}
+    CHANGE DATES
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+        <form action="{% url 'changeDates' %}" method="post">
+          {% csrf_token %}
+          
+          <h4 style="color:darkred; font-weight:bold;">CHANGE DATES</h4><hr><br>
+              
+                <label class="menulabels">Select Holiday to change dates;</label> <br><br>
+                
+                
+                {% for holiday in holidays %}
+                  <input type="radio" id={{holiday.id}} name="holiday" value={{holiday.id}}>
+                  <label for={{holiday.id}}>{{ holiday.holiday }} {{ holiday.datefrom.year }}</label><br>
+                {% endfor %}
+                
+              </select><br><br>
+                  
+              <button class="btn btn-primary" type="submit" value = "Login">Submit</button> <br> <br>
+              
+      </form>
+      
+    {% endblock %}

@@ -1,0 +1,63 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    ADD PARENT
+{% endblock %}
+
+{% block page %}
+    NEW PARENT
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'newParent' %}" method="post" >
+        {% csrf_token %}
+        
+            <h4 style="color:darkred; font-weight:bold;">NEW PARENT</h4><hr><br>
+            
+            <label class="labels">Surname:</label>
+            <input name="surname" type="text"/><br><br>
+
+            <label class="labels">First Name:</label>
+            <input name="firstname" type="text"/><br><br>
+
+            <label class="labels">Relation:</label>
+                <select id="relation" name="relation">
+                    <option value="Mother" selected>Mother</option>
+                    <option value="Father">Father</option>
+                    <option value="Carer">Carer</option>
+                  </select><br><br>
+            
+            <label>Main Number:</label>
+                <input type="tel" name="mainNumber" pattern="[0]{1}[0-9]{10}"><br><br>
+            <label>Alternative Number:</label>
+                <input type="tel" name="altNumber" pattern="[0]{1}[0-9]{10}">
+            <br><br>
+            
+            <label class="labels">Other Contact:</label>
+                <select id="othercontact" name="othercontact">
+                    <option value="Mum">Mum</option>
+                    <option value="Dad">Dad</option>
+                    <option value="Other" selected>Other</option>
+                  </select><br><br>
+              
+                  <label>Other Number:</label>
+                  <input type="tel" name="otherNumber" pattern="[0]{1}[0-9]{10}">
+
+                  <br><br>
+            
+            
+            <input type="hidden" id="childID" name="childID" value={{id}}>
+   
+                
+            <button class="btn btn-primary" type="submit" value = "Cancel" name ="cancel">Cancel</button> 
+            <button class="btn btn-primary" type="submit" value = "Continue" name ="continue">Continue</button> <br> <br>
+            <br> <br>
+            
+    </form>
+</div>
+
+
+{% endblock %}

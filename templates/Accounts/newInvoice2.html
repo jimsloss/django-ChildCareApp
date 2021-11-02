@@ -1,0 +1,87 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    NEW INVOICE
+{% endblock %}
+
+{% block page %}
+    CREATE AN INVOICE
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+    <form action="{% url 'newInvoice' %}" method="post">
+        {% csrf_token %}
+        
+        <h4 style="color:darkred; font-weight:bold;">{{ invoice.month }} {{ invoice.year }} Invoice for {{ invoice.parentName }}</h4><hr>
+        
+        <!-- holder for data to be passed to next page -->
+        <input type="hidden" name="month" value="{{ invoice.month }}">
+        <input type="hidden" name="year" value="{{ invoice.year }}">
+        <input type="hidden" name="parentName" value="{{ invoice.parentName }}">        
+        <br>
+
+        {% for child, value in children.items %}  <!--value 0 = kid.id, value 1= totalHours, value 2 = totalMins, value 3= kid.childtype-->
+       
+            <h5 style="color:darkblue; font-weight:bold; text-align: left; padding-left: 10%">{{child}};</h5><br>
+            
+            <table class="table table-border" id="newInvoiceTable" style="width:90%" margin-left:auto;margin-right:auto;>
+                <thead>
+                    <tr >
+                        <th scope="col">Week Commencing </th>
+                        <th scope="col">Hours</th>
+                        <th scope="col">Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>                 <!--editWeekInvoice(request, id, month, year, surname):-->
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentID%}?name={{ invoice.week1 }}"> {{ invoice.week1 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentID%}?name={{ invoice.week2 }}"> {{ invoice.week2 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentID%}?name={{ invoice.week3 }}"> {{ invoice.week3 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentID%}?name={{ invoice.week4 }}"> {{ invoice.week4 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+
+                    {% if invoice.week5 != ""%}
+                    <tr>
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentID%}?name={{ invoice.week5 }}"> {{ invoice.week5 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                    {% endif %}
+
+                </tbody>
+            </table>
+
+            
+            
+        {% endfor %}
+            <br>
+        
+              <input type="hidden" name = "page" value="p2">
+              <input type="hidden" name = "update" value="no">
+              <input type="hidden" name = "invoice" value="{{ invoice.id }}">
+              <input type="hidden" name="invoices" value="{{ invoices }}">
+              <input type="hidden" name="children" value="{{ children }}">
+      
+            <button class="btn btn-primary"  style="margin-right: 30px" type="submit" value = "cancel" name="cancel">CANCEL</button> 
+            <button class="btn btn-primary" type="submit" value = "next">NEXT</button> 
+            <br> <br>
+    </form>
+    {% endblock %}

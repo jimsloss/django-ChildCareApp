@@ -1,0 +1,83 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block page %}
+    Home
+{% endblock %}
+
+{% block menuoptions%}
+<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+{% endblock %}
+
+{% block content %}
+
+<table id= "maintable" class="table table-borderless">
+    <tbody>
+        
+            <tr>
+                <td id = "noborder"><a href="/thisWeek">This Week</a></td>
+                <td  id = "noborder"rowspan="6"> 
+                    
+                    <img src="/media/images/swartzenneger.jfif" alt="Main Image" height="450">
+                    
+                
+                </td>                
+                 
+            </tr>
+            <tr>
+                <td id = "noborder"><a href="/kids">Kids</a></td>
+                
+                <td id = "noborder"><a href="/otherServices" target="_blank" style="color:teal;">Other Services</a></td> 
+            </tr>
+            <tr>
+                <td id = "noborder"><a href="/menu">Menu</a></td>
+                
+               
+            </tr>
+            <tr>
+                <td id = "noborder"><a href="/holidays">Holidays</a></td>
+                <td><a href="https://www.mortonmichel.com/" target="_blank" style="color:darkred;">My Insurance</a></td>
+            </tr>
+
+            <tr>
+                <td id = "noborder"><a href="/accounts">Accounts</a></td>
+                <td><a href="https://nicma.org/" target="_blank" style="color:darkred;">NICMA</a></td>
+            </tr>
+            <tr>
+                <td id = "noborder"><a href="/paperwork">Documents</a></td>
+                <td><a href="http://www.karenschildcare.co.uk/wordpress" target="_blank" style="color:darkred;">My Website</a></td>
+            </tr>
+    </tbody>
+</table>
+
+    
+
+<!--
+
+<table class = 'table borderless'>
+    <tbody id = "insurance">
+    <tr>
+        <td><a href="https://www.mortonmichel.com/" target="_blank" style="color:darkred;">My Insurance</a></td>
+        <td><a href="https://nicma.org/" target="_blank" style="color:darkred;">NICMA</a></td>
+        <td><a href="http://www.karenschildcare.co.uk" target="_blank" style="color:darkred;">My Website</a></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<div class="grid-container">
+    <div class="item1">1</div>  
+    <div class="item2">2</div>
+    <div class="item3">3</div>
+    <div class="item4"><a href="https://www.mortonmichel.com/" target="_blank" style="color:darkred;">My Insurance</a></div>
+    <div class="item5"><a href="https://nicma.org/" target="_blank" style="color:darkred;">NICMA</a></div>
+    <div class="item6"><a href="http://www.karenschildcare.co.uk" target="_blank" style="color:darkred;">My Website</a></div>
+  </div>
+{% endblock %}
+
+    
+-->

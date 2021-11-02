@@ -1,0 +1,60 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block page %}
+    New User
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        
+            <h1 style="color:darkred;">NEW USER REGISTRATION</h1>
+            <hr> <br>
+            
+            <label class="labels">First Name:</label>
+            <input name="firstname" type="text"/><br><br>
+
+            <label class="labels">Surname:</label>
+            <input name="Surname" type="text"/><br><br>
+            
+            <label class="labels">Email Address:</label>
+            <input name = "email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="20" required/><br><br>
+            
+            <label class="labels">Contact Number:</label>
+            <input name="phone" type="tel" id="phone" pattern="[0-9]{11}"><br><br>
+
+            <label class="labels">Reason for Access:</label>
+           
+            <select id="reason" name="reason" style="margin-left: 15px; margin-right:11%;">
+                <option value="Main" selected>Main User</option>
+                <option value="Admin">Administrator</option>
+                <option value="Guest">Guest</option>
+              </select><br>
+
+              <hr>
+            <label class="labels" style="margin-right: 40%;">Setup;</label><br>
+            
+              <label>Enter a username: </label>
+              <input name="username" type="text"/><br><br>
+              <label>Enter a password: </label>
+                <input name="password" type="password"/><br>
+                <hr>
+            <p align ="center">
+            <button class="btn btn-primary" type="submit" value = "Login">Submit</button>
+            <button class="btn btn-secondary" type="button" onclick="window.history.back();">Cancel</button><br><br>
+            <!--<button class="btn btn-secondary" type="submit" value = "Cancel">Cancel</button> <br> <br>-->
+            </p>
+    </form>
+</div>
+
+
+{% endblock %}

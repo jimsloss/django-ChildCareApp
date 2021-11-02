@@ -1,0 +1,42 @@
+
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE HOLIDAYS
+{% endblock %}
+
+{% block page %}
+    UPDATE HOLIDAYS
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox" style="font-size:18px;">
+    
+    <form action="{% url 'holidaysUpdateAction' %}" method="post" >
+        {% csrf_token %}
+        
+            <h4 style="color:darkred; font-weight:bold;">UPDATE HOLIDAY</h4><hr><br>
+            
+            <label class="labels">I NEED TO:</label><br><br>
+            
+            <div style="text-align: left; margin-left:40%;">
+            <input type="radio" id="addholiday" name="holidayupdate" value="addholiday">
+            <label for="addholiday">Add Holiday</label><br>
+
+            <input type="radio" id="removeholiday" name="holidayupdate" value="removeholiday">
+            <label for="removeholiday">Remove Holiday</label><br>
+            
+            <input type="radio" id="changedates" name="holidayupdate" value="changedates">
+            <label for="changedates">Change Dates</label><br>
+            </div>
+                <br>
+            <button class="btn btn-primary" type="submit" value = "Login">Continue</button> 
+            <button class="btn btn-primary" type="submit" value = "Cancel">Cancel</button> <br> <br>
+            <br> <br>
+            
+    </form>
+</div>
+
+
+{% endblock %}

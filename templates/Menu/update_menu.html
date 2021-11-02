@@ -1,0 +1,44 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE MENU
+{% endblock %}
+
+{% block page %}
+    UPDATE MENU
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+    <!--form action="{% url 'register' %}" method="post">-->
+    <form action="{% url 'newmenu' %}" method="post">
+        {% csrf_token %}
+        
+        <h4 style="color:darkred; font-weight:bold;">UPDATE MENU</h4><hr><br>
+            
+            <label class="menulabels">DAY:</label>
+            <select id="day" name="day">
+                <option value="monday" selected>Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+              </select><br><br>
+        
+              <label class="menulabels">MEAL TIME:</label>
+              <select id="mealtime" name="mealtime">
+                  <option value="morning" selected>Morning</option>
+                  <option value="lunch">Lunch</option>
+                  <option value="afternoon">Afternoon</option>
+                </select><br><br>
+          
+            <label class="menulabels">MEAL:</label>
+            <input name="meal" type="textbox" autocomplete="off"/><br><br>
+                
+            <button class="btn btn-primary" type="submit" value = "Login">Submit</button> <br> <br>
+            
+    </form>
+    {% endblock %}

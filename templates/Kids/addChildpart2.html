@@ -1,0 +1,56 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    ADD CHILD
+{% endblock %}
+
+{% block page %}
+    NEW CHILD P2
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'newChild2' %}" method="post" >
+        {% csrf_token %}
+        
+            <h4 style="color:darkred; font-weight:bold;">NEW CHILD CONTACTS</h4><hr><br>
+            
+            <label class="labels">Main Contact: </label>
+              <select id="maincontact" name="maincontact">
+                  <option value="Mum" selected>Mum</option>
+                  <option value="Dad">Dad</option>
+                  <option value="Other">Other</option>
+                </select><br><br>
+            
+                <label>Main Number:</label>
+                <input type="tel" name="c1" pattern="[0]{1}[0-9]{10}"><br><br>
+                <label>Alternative Number:</label>
+                <input type="tel" name="c2" pattern="[0]{1}[0-9]{10}">
+                <br><br>
+            <label class="labels">Other Contact:</label>
+                <select id="othercontact" name="othercontact">
+                    <option value="Mum">Mum</option>
+                    <option value="Dad">Dad</option>
+                    <option value="Other" selected>Other</option>
+                  </select><br><br>
+              
+                  <label>Other Number:</label>
+                  <input type="tel" name="c3" pattern="[0]{1}[0-9]{10}">
+
+                  <br><br>
+  
+           
+          
+          <input type="hidden" id="page2" name="childID" value={{id}}>
+            
+                
+          <button class="btn btn-secondary" type="submit" value = "Cancel" name ="cancel">Cancel</button>
+          <button class="btn btn-primary" type="submit" value = "Continue" name = "continue">Continue</button> <br> <br>
+           
+    </form>
+</div>
+
+
+{% endblock %}

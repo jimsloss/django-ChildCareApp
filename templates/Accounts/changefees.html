@@ -1,0 +1,40 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    CHANGE FEES
+{% endblock %}
+
+{% block page %}
+    CHANGE FEES
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+  
+    <!--form action="{% url 'register' %}" method="post">-->
+    <form action="{% url 'changefees2' %}" method="post">
+        {% csrf_token %}
+        
+
+        <h4 style="color:darkred; font-weight:bold;">CHANGE FEE</h4><hr><br>
+            
+
+              <label class="menulabels">SELECT FEE:</label>
+              <select id="feechange" name="feechange">
+                {% for choice in choices %}
+                  <option value= "{{ choice }}">{{choice}}</option>
+                {% endfor %}
+              </select>
+
+              <br><br>
+                  
+            <label class="menulabels">NEW FEE: £</label>
+            <input name="newfee" type="number"><br><br>    
+
+            <button class="btn btn-primary" type="submit" value = "Login">Submit</button> 
+            <button class="btn btn-secondary" type="submit" value = "Cancel">Cancel</button> <br> <br>
+            <br> <br>
+    </form>
+  {% endblock %}

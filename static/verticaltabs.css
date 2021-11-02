@@ -1,0 +1,153 @@
+  
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid white;
+  background-color: #006699;
+  width: 15%;
+  height: 470px; /*controls size of container containing vertical buttons*/
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding: 25px 16px;
+  width: 100%;
+  /*border: solid;*/
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 22px;
+  height: 117px;
+  /*transform-origin: 0 0;
+  transform: rotate(90deg);*/
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: darkgray;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: right;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  width: 85%;
+  border-right: none;
+  height: 470px;
+  background: lightgrey;
+  display: none;
+}
+
+.tabcontent2 {
+  float: right;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  width: 85%;
+  border-right: none;
+  height: 468px;
+  background: lightgrey;
+  display: none;
+}
+
+/*#verticaltabpage {
+  background-color: aqua; 
+  height: 400px;
+  width: 80%;
+  /*background-color: powderblue;
+}*/
+
+/*first tab column layout*/
+h3{
+  text-align:center;
+  color:darkred;
+  
+}
+
+.column-left{ 
+  float: left; width: 33.333%; 
+}
+
+.column-center{
+   display: inline-block; 
+   width: 33.333%; 
+  }
+
+.column-right{ 
+  float: right; 
+  width: 33.333%; 
+}
+
+.vtab_labels{
+    width: 250px; 
+    text-align: left;
+    color: darkblue;
+    font-weight: bold;
+}
+
+h4{
+  color:darkblue;
+  font-weight:bold;
+}
+
+h6{
+  font-weight:bold;
+  font-style:italic;
+}
+#h6val{
+  margin-left:20px;
+}
+
+.update-details-button{
+  width: 100%;
+  text-align: center;
+  color:darkred;
+  
+}
+
+.btn btn-primary{
+  min-width: 200px;
+  min-height: 40px;
+  font-size:20px;
+}
+
+
+#popUpDiv{
+  z-index: 100;
+  position: absolute;
+  background-color: rgba(123, 123,123, 0.8);
+  display: none;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 300px;
+}
+
+#popupSelect{
+  z-index: 1000;
+  position: absolute;
+  top: 130px;
+  left: 50px;
+}
+
+
+.radios{
+  margin-left: 20px; 
+  margin-right: 5px;
+}
+
+.radiolabels{
+  font-size: large;
+}

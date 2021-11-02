@@ -1,0 +1,38 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE HOLIDAY
+{% endblock %}
+
+{% block page %}
+    ADD HOLIDAY
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+    <!--form action="{% url 'register' %}" method="post">-->
+    <form action="{% url 'addHoliday' %}" method="post">
+        {% csrf_token %}
+        
+        <h4 style="color:darkred; font-weight:bold;">ADD HOLIDAY</h4><hr><br>
+            
+           
+              <label class="menulabels">FROM:</label>
+              <input type="date" style="text-align:center;" id = "addfrom" name ="addfrom">
+              <br><br>
+
+              <label class="menulabels">TO:</label>
+              <input type="date" style="text-align:center;" id="addto" name = "addto">
+              <br><br>
+        
+          
+            <label class="menulabels">HOLIDAY NAME:</label>
+            <input name="addname" type="textbox" autocomplete="off"/><br><br>
+                
+            <button class="btn btn-primary" type="submit" value = "Login">Submit</button> 
+            <button class="btn btn-secondary" type="submit" value = "Cancel">Cancel</button> <br> <br>
+            <br> <br>
+    </form>
+    {% endblock %}

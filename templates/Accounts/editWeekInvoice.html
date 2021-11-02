@@ -1,0 +1,98 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    NEW INVOICE
+{% endblock %}
+
+{% block page %}
+    EDIT WEEK DETAIL
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+    <!--PASSED IN : WEEK RATES SURNAME CHILD-->
+    
+    <!--PASS OUT : INVOICES CHILDREN MONTH YEAR SURNAME-->
+    
+    <form action="{% url 'newInvoice' %}" method="post">
+        {% csrf_token %}
+
+       
+        
+        <h4 style="color:darkred; font-weight:bold;">WEEK COMMENCING: {{ week}}</h4><hr>
+
+        <h4 style="color:darkblue; font-weight:bold;"> {{child.firstname}}'s attendance for this week;</h4><br>
+
+        <label class="labels">RATE:</label>
+
+        <select id="childrate" name="childrate">
+            {% for rate in rates %}
+                <option value="{{ rate }}"> {{rate}} </option>      
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <table class="table table-bordered"> 
+            <thead>
+                <tr>
+                    <th>DAY</th>
+                    <th>START</th>
+                    <th>FINISH</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td> 
+                    <td><input name="MonS" type="time" style="width:100px" value= "{{ child.mondaystart|time:'H:i' }}"/></td> 
+                    <td><input name="MonF" type="time" style="width:100px" value= "{{ child.mondayfinish|time:'H:i' }}"/></td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td> 
+                    <td><input name="TueS" type="time" style="width:100px" value= "{{ child.tuesdaystart|time:'H:i' }}"/></td> 
+                    <td><input name="TueF" type="time" style="width:100px" value= "{{ child.tuesdayfinish|time:'H:i' }}"/></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td> 
+                    <td><input name="WedS" type="time" style="width:100px" value= "{{ child.wednesdaystart|time:'H:i' }}"/></td> 
+                    <td><input name="WedF" type="time" style="width:100px" value= "{{ child.wednesdayfinish|time:'H:i' }}"/></td>
+                </tr>
+                <tr>
+                    <td>Thursday</td> 
+                    <td><input name="ThuS" type="time" style="width:100px" value= "{{ child.thursdaystart|time:'H:i' }}"/></td> 
+                    <td><input name="ThuF" type="time" style="width:100px" value= "{{ child.thursdayfinish|time:'H:i' }}"/></td>
+                </tr>
+                <tr>
+                    <td>Friday</td> 
+                    <td><input name="FriS" type="time" style="width:100px" value= "{{ child.fridaystart|time:'H:i' }}"/></td> 
+                    <td><input name="FriF" type="time" style="width:100px" value= "{{ child.fridayfinish|time:'H:i' }}"/></td>
+                </tr>
+                <tr>
+                    <td>Saturday</td> 
+                    <td><input name="SatS" type="time" style="width:100px" value= "{{ child.saturdaystart|time:'H:i' }}"/></td> 
+                    <td><input name="SatF" type="time" style="width:100px" value= "{{ child.saturdayfinish|time:'H:i' }}"/></td>
+                </tr>
+            </tbody>
+            
+        </table>
+        
+        
+            <br>
+            <input type="hidden" name="childid" value="{{id}}">
+            <input type="hidden" name="month" value="{{month}}">
+            <input type="hidden" name="year" value={{year}}>
+            <input type="hidden" name="selectParent" value="{{parentname}}">
+             
+              <!--<input type="hidden" name = "page" value="p3">-->
+              <input type="hidden" name = "page" value="NewInvoicePage1">
+              <input type="hidden" name = "update" value="yes">
+              
+            <button class="btn btn-primary" type="submit" value = "next">DONE</button> 
+            
+            <br> <br>
+    </form>
+
+</div>
+
+{% endblock %}

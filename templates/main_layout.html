@@ -1,0 +1,101 @@
+<!DOCTYPE html>  <html lang="en">
+
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- bootstrap -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MAIN LAYOUT LINK -->
+        <!-- the now U bit updates timestampt to bypass cache when displaying pages in browser-->
+        <link href="/static/main_layout.css?{% now 'U' %}" rel="stylesheet">
+        
+        <!-- javascript for popup on 'thisweek' -->
+        <script src="/static/popup.js"></script>
+
+        <!-- not sure why these are needed -->
+        <!--<script src="http://kit.fontawesome.com/a076d05399.js"></script>-->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <!-- for the vertical tabs pages -->
+        <link href="/static/verticaltabs.css?{% now 'U' %}" rel="stylesheet">
+        <script src="/static/verticaltabs.js?{% now 'U' %}"></script>
+
+        <!--for use in accounts, to allow dynamic change on page with drop down seleciont-->
+        <script src="{% url 'js_reverse' %}" type="text/javascript"></script>
+
+
+
+        <!-- this is the title shown on page tab -->
+        <title>Childcare Web App: {% block title %}{% endblock %}</title> 
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- for datepicker in thisweek -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script>
+            $( 
+                function() 
+                {
+                    $( "#datepicker" ).datepicker({ dateFormat: 'dd-MM-yy'}).datepicker("setDate", new Date());     
+                    $( "#datepicker2" ).datepicker({ dateFormat: 'dd/mm/y'}).datepicker("setDate", new Date());
+                    $( "#datepicker3" ).datepicker({ dateFormat: 'dd/mm/y'}).datepicker("setDate", new Date());
+                } 
+            );
+            
+        </script>
+
+    </head>
+
+    <div id = "userloggedin">
+        Logged in as: {{ user.username }}  
+    </div>
+
+    <div id = "maintitle">
+         CHILDCARE WEB APPLICATION 
+    </div>
+    
+
+    <body>
+        <nav>
+
+            <input type = "checkbox" id="check">
+
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <label class="logo">{% block page %}{% endblock %}</label>
+            <ul>
+                {% block menuoptions %}
+                        
+                {% endblock %}
+                
+            </ul>
+        </nav>
+
+        <section></section>
+
+        <div id = "bg">
+        
+        
+        <main class="container p-5">
+
+            {% block content %}
+    
+            {% endblock %}
+    
+        </main>
+        </div>
+
+    </body>
+
+</html>

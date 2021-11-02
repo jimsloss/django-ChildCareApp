@@ -1,0 +1,38 @@
+
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE CHILD COMPLETE
+{% endblock %}
+
+{% block page %}
+    UPDATE CHILD COMPLETE
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'kids' %}">
+        {% csrf_token %}
+
+            <input type="hidden" id="id" name="childID" value= "{{ id }}">
+
+            <h4 style="color:darkblue; font-weight:bold; font-size: 40px;">{{ child.firstname }}'s Update Completed</h4><hr><br>
+            
+            <div style="text-align: center;">
+
+        
+                <img src="{{ 'media/images/smiley.jpg' }}" alt="smiley pic" height="200" style="margin-left:10%;">
+                <br><br>
+            
+             
+            <button class="btn btn-primary" style ="font-size: 20px" type="submit" value = "Login">FINISHED</button> <br> <br>
+            
+            <br> <br>
+            
+    </form>
+</div>
+
+
+{% endblock %}

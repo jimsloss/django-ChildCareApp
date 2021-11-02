@@ -1,0 +1,402 @@
+{% extends "Accounts/accounts_layout.html" %}
+
+<!--  NAME ON TAB  -->
+{% block title %}    Accounts   {% endblock %} 
+
+<!--  NAME ON MENU BAR-->
+{% block page %}     Accounts   {% endblock %}
+
+<!--  MENU BAR  -->
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">This Week</a></li>
+    <li class="nav-item"><a class="nav-link" href="/kids">Kids</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Documents</a></li>
+    <li class="nav-item"><a class="nav-link" href="/otherServices">Other Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+{% endblock %}
+
+{% block subtitle %} {% endblock %} <!-- UNUSED -->
+
+<!-- NAMES ON TABS-->
+{% block tab1 %}    Pricing         {% endblock %}
+{% block tab2 %}    Invoices        {% endblock %}
+{% block tab3 %}    Purchases       {% endblock %}
+{% block tab4 %}    Tax Returns     {% endblock %}
+
+
+<!-- TITLES ON TAB PAGES-->
+{% block tab1title %} Creche Fees {% endblock %}
+{% block tab2title %} Invoices {% endblock %}
+{% block tab3title %} Purchases {% endblock %}
+{% block tab4title %} Tax Returns {% endblock %}
+
+
+<!--  MAIN PICTURE ON ACCOUNTS SCREEN-->
+{% block mainphoto %}
+    <div id="childphoto">
+        <img src="/media/images/accounts image.png" alt="Accounts Photo" height="465 width="700"
+        style="border:2px solid black; margin-left:10%">
+    </div>
+{% endblock %}
+
+<!--########### TAB 1 ############-->
+
+    {% block mainleft %}
+    
+        <h4>General Fees (daily rate)</h4>
+            <br> Full Day :  £{{ prices.0.fullday }}
+            <br>
+            <br> Part Day :  £{{ prices.0.parttime }}
+            <br>  (5 hours or less)
+            <br>
+            <br> Retainer fee is half normal fee
+            <br>
+            <br> Late Payment Fee:  £{{ prices.0.latepayment}}
+            <br>
+            <br> Late Pickup Fee:  £{{ prices.0.latepickup}}
+            
+            
+    {% endblock %}
+
+    {% block mainmiddle %}
+
+        <h4>  Saturday Creche</h4>
+              (Little Crafters)
+        <br>  
+        <br>  £{{ prices.0.saturdaycreche }} / hour
+        <br>  (only pay for hours used)
+        <br> 
+        <br><br><br><br>
+        
+    {% endblock %}
+
+    {% block mainright %}
+
+        <h4>Wedding Childcare</h4>
+        <br>
+        <br>
+        <br><br>
+
+        <h4>Evening Childcare</h4>
+        <br>  £{{ prices.0.eveningcare }} / hour
+
+    {% endblock %}
+
+    {% block updatebutton %}
+
+        <div class = "update-details-button">
+            <form action="{% url 'changefees' %}" method="post">
+                {% csrf_token %}
+            
+                <input type="submit" class="btn btn-primary" style = "min-width: 200px; min-height: 40px; font-size:20px" value="Update" />
+            </form>
+            
+            <!--<form action="" method="post">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit" name = "submit" value = "Add" style ="margin:20px;">SEND INFORMATION</button>            
+                <button class="btn btn-primary" type="submit" name = "update" value = "update" style ="margin:20px;">UPDATE</button>            
+            -->
+        </div>
+
+    {% endblock %}
+
+<!--########### TAB 2 ############   INVOICES   -->
+
+    <div class="column-center">
+    
+    {% block tab2content %} 
+
+        <!--
+        <form id ="test">
+            <h5 style="text-align: center;"> 
+                <label class="labels2">Month:</label>
+                <select id="month" name="month" onchange="changeInvoiceTable(this)">
+                    <option value="thismont" selected>{{ invoices.month }}</option>
+                    <option value="nextmonth">February</option>
+                </select>
+                <label class="labels2">Year:</label>
+                <select id="year" name="year">
+                    <option value="thisyear" selected>2020</option>
+                    <option value="nextyear">2021</option>
+                </select>
+                <label class="labels2">Name:</label>
+                <select id="month" name="month">
+                    <option value="thismonth" selected>Sloss</option>
+                    <option value="nextmonth">Magowan</option>
+                </select>  
+            </h5>
+        </form>
+        -->
+        
+        <form id ="test">
+        
+            <h5 style="text-align: center;">
+           
+            
+                <label class="labels2">Month:</label>
+                <select id="month" name="month" onchange="changeInvoiceTable(this)">
+                    {% for month in months %}       
+                        <option value="nextmonth">{{ month }}</option>
+                    {% endfor %}
+                </select>
+                <label class="labels2">Year:</label>
+                <select id="year" name="year">
+                    {% for year in years %}   
+                        <option value="nextyear">{{year}}</option>
+                    {% endfor %}
+                </select>
+                <label class="labels2">Name:</label>
+                <select id="month" name="month">
+                    {% for parent in parents %}   
+                        <option value="nextmonth">{{parent}}</option>
+                    {% endfor %}
+                </select>  
+            
+        
+            </h5>
+        
+        </form>
+
+
+        <!--<table class="table table-bordered" style="width:100%" margin-left:auto;margin-right:auto;>-->
+        <div style="height:220px; overflow-y: auto;">
+        <table id="VScrollTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">   
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <!--<th scope="col" style="width:50px;">ID</th>-->
+                    <!--<th scope="col">Invoice</th>-->
+                    <th scope="col">Month</th>
+                    <!--<th scope="col">Year</th>-->
+                    <th scope="col">Parent Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                    
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for invoice in invoices %}
+                <tr>
+                    <!--<td>{{invoice.id}}</td>-->
+                    <td><a href="{% url 'invoiceview' %}?name={{invoice.id}}"> {{ invoice.id }}</a></td>
+                    <!--NEED TO CREATE URL, VIEW, TEMPLATE FOR INVOICE VIEW -->
+                    <td>{{invoice.month}} {{invoice.year}}</td>
+                    <td>{{invoice.parentName}}</td>
+                    <td>{{invoice.total}}</td>
+                    <td>{{invoice.status}}</td>
+                    
+                </tr>
+                {% endfor %}
+                
+   
+                    
+
+
+                <!--<tr>
+                    <td><strong>TOTAL:</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td>£000.00</td>
+                    <td></td>
+                </tr>-->
+            </tbody>
+        </table>
+        </div>
+
+        <!--Total at bottom of table-->
+        <div style ="width:auto; text-align: right; padding-right: 80px; padding-top: 5px; color:darkred;"><h6>TOTAL :   {{total}}</h6></div>
+        
+        <form action="{% url 'newInvoice' %}" method="post">
+            {% csrf_token %}
+            <p align ="center">
+                <button class="btn btn-primary" type="submit" name = "submit" value = "Update">New Invoice</button> 
+            </p>
+            <input type="hidden" name = "page" value="CreateInvoiceButton"> 
+        </form>
+    
+    {% endblock %}
+  
+    </div>
+  
+
+    <!--########### TAB 3 ############-->
+
+    {% block tab3content %}
+
+    <form style="text-align: center;" action="{% url 'addPurchase' %}" method="post">
+        {% csrf_token %}
+
+        <input type="hidden" name = "task" value="purchases">
+
+        <label class="labels2" >From:</label>
+        <input type="text" style="text-align:center; width:100px;" id="datepicker2" value = "{{today}}">
+        
+        
+          <label class="labels2">To:</label>
+          <input type="text" style="text-align:center; width:100px;" id="datepicker3" value = "{{today}}">
+
+          
+        
+            <label class="labels2" >Cat:</label>
+            <select style="text-align:center; width:100px;" id="category" name="category">
+                <option value="cat0" selected>Any</option>
+                <option value="cat1">Food</option>
+                <option value="cat2">Petrol</option>
+                <option value="cat2">Oil</option>
+              </select>
+
+              <label class="labels2">Name:</label>
+            <select style="text-align:center; width:100px;" id="name" name="name">
+                <option value="any" selected>Any</option>
+                <option value="1819">18/19</option>
+                <option value="1920">19/20</option>
+                <option value="2021">20/21</option>
+              </select><br>
+            
+    
+    
+<br>
+    <!--<table class="table table-bordered" style="width:80%; margin-left:auto; margin-right:auto; Height: 10px; overflow:scroll;">-->
+
+        <div style="height:200px; overflow-y: auto;">
+            
+         
+        <table id="VScrollTable" class="table table-striped table-bordered table-sm" cellspacing="0"
+        width="100%">   
+
+        <thead>
+            <tr>
+                
+                <th scope="col">Day</th>
+                <th scope="col">Month</th>
+                <th scope="col">Year</th>
+                <th scope="col">TaxYear</th>
+                <th scope="col">Category</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            
+                <!--<td id="idcolumn"><strong>Morning</strong></td>-->
+                {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase.date.day}}</td>
+                    <td>{{ purchase.date.month}}</td>
+                    <td>{{ purchase.date.year}}</td>
+                    <td>{{ purchase.date.year}}</td> 
+                    <td>{{ purchase.category}}</td>
+                    <td>{{ purchase.name}}</td>
+                    <td>{{ purchase.amount}}</td>
+                </tr>
+                {% endfor %}
+            
+                <!--<td>1st</td>
+                <td>January</td>
+                <td>2020</td>
+                <td>19/20</td>
+                <td>Food</td>
+                <td>£75.42</td>
+                <td>Asda</td>
+                
+            </tr>
+            <tr>
+                <td>10th</td>
+                <td>January</td>
+                <td>2020</td>
+                <td>19/20</td>
+                <td>Petrol</td>
+                <td>£30</td>
+                <td>Texaco Moy</td>
+                
+            </tr>
+            <tr>
+                <td>31st</td>
+                <td>January</td>
+                <td>2020</td>
+                <td>19/20</td>
+                <td>Oil</td>
+                <td>£160</td>
+                <td>Kirklands</td>
+                
+            </tr>-->
+            
+        </tbody>
+    </table>
+     </div>
+    <p align = center>
+        <button class="btn btn-primary" type="submit" name = "submit" value = "Update" \
+        style ="margin:20px;">Add A Purchase</button> 
+    </p>
+    
+</form>
+    {% endblock %}
+
+
+<!--########### TAB 4 ############-->
+
+<!--online tax return hmrc.gov.uk/online-- research auto fill in web form-->
+
+    {% block tab4left %}
+
+    <h4>Personal Details</h4><br>
+    <h6>Name:</h6> 
+    <span id="h6val">....</span><br><br>
+    <h6>Address:</h6>
+    <div id="h6val">.....<br>
+    .....<br>
+    .....<br>
+    .....<br><br></div>
+    <h6>DOB:</h6>
+    <span id="h6val">......<br><br></span>
+    
+
+
+    {% endblock %}
+
+    {% block tab4middle %}
+
+    <h4>HMRC Details</h4><br>
+    <h6>Unique Tax Payer Ref (UTR):</h6> <br><br><br>
+    <h6>National Insurance Number:</h6> <br><br><br>
+    <h6>Employer Ref:</h6>
+    <br><br>
+
+    <a href="/static/documents/sa100-2021.pdf" target="_blank">SA100 Self Assessment Form  2021</a>
+    
+
+
+    {% endblock %}
+
+    {% block tab4right %}
+    
+    <h4>Local Tax Office</h4><br>
+
+        <h6>Location</h6>
+        <span id="h6val">.....</span><br><br>
+        <h6>Address</h6>
+        <div id="h6val">Tax Office, .....
+        ....., 
+        ....., 
+        .....,
+        .....</div>
+        <br>
+        <h6>Tel:</h6>
+        <span id="h6val">... ... ......</span>
+        <br><br>
+        <p align ="center">
+            
+            <button class="btn btn-primary" type="submit" name = "update" value = "update" style ="margin:20px;">UPDATE</button>
+    
+            <button class="btn btn-primary" type="submit" name = "getsummary" value = "getsummary" style ="margin:20px;">GET SUMMARY</button>
+            
+        
+        
+        </p>
+    {% endblock %}
+

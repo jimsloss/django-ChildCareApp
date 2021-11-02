@@ -1,0 +1,329 @@
+{% extends "vtabs_layout.html"%}
+
+{% block title %}
+    
+{% endblock %}
+
+{% block page %}
+    Child Details
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/kids">Kids</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Documents</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+
+{% endblock %}
+
+{% block subtitle %}
+  
+<h1 style="color: #006699 ; text-align:center;"> {{ firstname }} {{ secondname }}</h1> <br>
+
+{% endblock %}
+
+
+{% block tab1 %} Main {% endblock %}
+{% block tab2 %} Contacts {% endblock %}
+{% block tab3 %} Health {% endblock %}
+{% block tab4 %} Documents {% endblock %}
+{% block tab5 %} Spare {% endblock %}
+
+{% block tab1title %} {% endblock %}
+{% block tab2title %} Contacts {% endblock %}
+{% block tab3title %} Child Health {% endblock %}
+{% block tab4title %} Documents {% endblock %}
+{% block tab5title %} Spare {% endblock %}
+
+{% block mainphoto %}
+
+  <div id="childphoto">    
+      <img src= "{{ photo }}" alt="{{ firstname }} {{ secondname }} pic" height="400" width="300" style="border:2px solid black; margin-left:22%">
+      
+  </div>
+  
+{% endblock %}
+
+<!--########### TAB 1 ############-->
+    
+
+    {% block mainleft %}
+
+        <span class="vtab_labels" style="color:darkred; font-size:20px" >Personal Details</span>
+        <br><br>
+        <span class="vtab_labels">Name:</span> {{ firstname }} {{ secondname }} <br>
+        <br>
+        <span class="vtab_labels" style="formatDate('dd/mm/yyyy');">Date of birth:</span> {{dob}} <br>
+        <br>
+        <span class="vtab_labels">Age:</span> {{ age }}<br> 
+        <br>
+        <span class="vtab_labels">Gender:</span> {{ gender }} <br>
+        <br>
+        <span class="vtab_labels">Address:</span> <br> <br>
+        {{ address }} <br>
+        
+        <br>
+
+
+    {% endblock %}
+
+    {% block mainmiddle %}
+
+        <span class="vtab_labels" style="color:darkred; margin-left:30px; font-size:20px">Attendance: {{type}} </span>
+        <br><br>
+         
+        <div style="margin-left: 20px;">
+            <table class="table table-bordered" style="font-size:small">
+               <!-- <thead>
+                    <tr>
+                        <th scope="col">Day</th> <th scope="col">Start</th> <th scope="col">Finish</th>
+                    </tr>
+                </thead>  -->
+        
+                <tbody>
+                    <tr> <td><strong>Mon</strong></td> <td>{{mondayS|time:"H:i" }}</td> <td>{{mondayF|time:"H:i"}}</td> </tr>
+                    <tr> <td><strong>Tue</strong></td> <td>{{tuesdayS|time:"H:i"}}</td> <td>{{tuesdayF|time:"H:i"}}</td> </tr>
+                    <tr> <td><strong>Wed</strong></td> <td>{{wednesdayS|time:"H:i"}}</td> <td>{{wednesdayF|time:"H:i"}}</td> </tr>
+                    <tr> <td><strong>thu</strong></td> <td>{{thursdayS|time:"H:i"}}</td> <td>{{thursdayF|time:"H:i"}}</td> </tr>
+                    <tr> <td><strong>Fri</strong></td> <td>{{fridayS|time:"H:i"}}</td> <td>{{fridayF|time:"H:i"}}</td> </tr>
+                    <tr> <td><strong>Sat</strong></td> <td>{{saturdayS|time:"H:i"}}</td> <td>{{saturdayF|time:"H:i"}}</td> </tr>
+                </tbody>
+            </table>
+        </div>
+        
+       <!-- <br>
+        <button style="margin-left: 25%" class="btn btn-primary">Update Details</button>
+        <br><br>-->
+        
+    {% endblock %}
+
+    {% block mainright %}
+
+    <div style="text-align: center;">
+
+        
+        <img src="{{ photo }}" alt="{{ firstname }} {{ secondname }} pic" height="250" width="180" style="margin-left:22%; margin-top:10%">
+        <br><br>
+        
+   
+       <!-- <p id ="getphotobutton" style="margin-left: 25%;">
+            <button class="btn btn-primary" type="submit" name = "submit" value = "Update" style ="margin:20px;" onclick="changephoto()">Change Photo</button> 
+        </p> -->
+    
+        
+       
+
+
+
+<!--
+        <p id ="getphotobutton" style="margin-left: 25%;">
+
+            <!--<form method="post" enctype="multipart/form-data">
+            <form action="{% url 'newChild' %}" method="post"></form>
+                {% csrf_token %}
+
+                <input id="childphoto" type="file" class="" name="childphoto">     
+                
+                <button class="btn btn-primary" type="submit" value = "Login" style ="margin:20px;">Change Photo</button> <br> <br>
+                <!--<button id = "uploadbutton" class="btn btn-primary" type="submit" name = "submit" value = "Update" style ="margin:20px;" onclick="changephoto()">Change Photo</button> 
+            </form>
+
+        </p>
+    -->
+
+
+    </div>
+            
+    {% endblock %}
+
+
+    {% block updatebutton %}
+
+        <div class = "update-details-button">
+
+            <!--<form action="/updateChild">-->
+            <form action="{% url 'updateChild' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" id="id" name="id" value= "{{ id }}">
+                <input type="submit" class="btn btn-primary" style = "min-width: 200px; min-height: 40px; font-size:20px" value="Update" />
+            </form>
+        
+      </div>
+    {% endblock %}
+
+<!--########### TAB 2 ############-->
+
+    {% block tab2left %}
+    
+        <h4>Main</h4>
+        <br>
+        <span style="font-weight: bold; font-size: 18px;">
+            {{ maincontact }}</span><br><br>
+            <span style="font-style:italic;"> Number :</span> {{ c1 }}<br><br>
+            <span style="font-style:italic;"> Alt Number  : </span>{{ c2 }}<br><br><br>
+            <span style="font-style:italic;"> Email Address : </span><br><br>
+            j.sloss@btinternet.com<br>
+        
+
+    {% endblock %}
+
+    {% block tab2middle %}
+    
+        <h4>Alternative</h4>
+        <br>
+        <span style="font-weight: bold; font-size: 18px;">
+            {{ othercontact }}</span><br><br>
+            Main Number : {{ c3 }}<br><br>
+            
+        <span style="font-weight: bold; font-size: 18px;">
+            School / Playgroup</span><br><br>
+            Main Number :<br><br>
+            
+    {% endblock %}
+
+    {% block tab2right %}
+    <img src="{{ photo }}" alt="{{ firstname }} {{ secondname }} pic" height="250" width="180"style="margin-left:22%; margin-top:10%">
+        <br>
+        
+        
+    
+    {% endblock %}
+
+    {% block updatebutton2 %}
+
+    <div class = "update-details-button">
+    
+        <button type = "button" class="btn btn-primary"  style = "min-width: 200px; min-height: 40px; font-size:20px">Update Details</button>
+    
+    </div>
+    
+    {% endblock %}
+
+
+    <!--########### TAB 3 ############-->
+
+    {% block tab3left %}
+
+        <h4>Diet Information</h4>
+        <br>
+        <p>
+            {{ dietry }}<br>
+            
+        </p>
+<br>
+        <h4>Medical Information</h4>
+        <br>
+        <p>{{ medical }}</p><br>    
+
+    {% endblock %}
+
+    {% block tab3middle %}
+
+    
+
+    <h4>Doctor Details</h4>
+    <br>
+        <span style="font-style:italic;"> Practice Number :</span> 01234567890<br><br>
+      
+        <span class="vtab_labels">Practice Address:</span> <br> 
+        ........................................................ <br> 
+        ........................................................ <br>
+        ........................................................ <br>
+        <br>
+    
+    {% endblock %}
+
+    {% block tab3right %}
+    <img src="{{ photo }}" alt="{{ firstname }} {{ secondname }} pic" height="250" width="180"style="margin-left:22%; margin-top:10%">
+    <br>
+
+    {% endblock %}
+
+    {% block updatebutton3 %}
+
+        <div class = "update-details-button">
+        
+            <button type = "button" class="btn btn-primary"  style = "min-width: 200px; min-height: 40px; font-size:20px">Update Details</button>
+        
+      </div>
+    {% endblock %}
+
+
+    <!--########### TAB 4 ############-->
+
+    {% block tab4left %}
+
+    <h4>Contract</h4>
+    <br>
+    <p>Not uploaded yet</p>
+    <a href="Contract">Contract</a>
+    <br><br>
+    <p style="color:darkgray; font-style:italic;">(dev idea: web scrap- auto<br>
+         download + display NICMA <br>
+        policies, updates and Bulletins)</p>
+   
+
+    {% endblock %}
+
+    {% block tab4middle %}
+    <h4>Policies</h4>
+    <br>
+    <p>None uploaded yet</p>
+    <br>
+    <h4>Consent Forms</h4>
+    <br>
+    <ul>
+        <li>Photos</li>
+        <li>Trips</li>
+    </ul>
+
+       
+    {% endblock %}
+
+    {% block tab4right %}
+    <img src="{{ photo }}" alt="{{ firstname }} {{ secondname }} pic" height="250" width="180"style="margin-left:22%; margin-top:10%">
+    <br>
+
+    {% endblock %}
+
+    {% block updatebutton4 %}
+
+        <div class = "update-details-button">
+        
+            <button type = "button" class="btn btn-primary"  style = "min-width: 200px; min-height: 40px; font-size:20px">Update Details</button>
+        
+      </div>
+    {% endblock %}
+
+    
+<!--########### TAB 5 ############-->
+
+    {% block tab5left %}
+
+        
+    {% endblock %}
+
+    {% block tab5middle %}
+   
+
+    {% endblock %}
+
+    {% block tab5right %}
+    
+    {% endblock %}
+
+    {% block updatebutton5 %}
+
+    <!--<div class = "update-details-button">
+    
+        <button type = "button" class="btn btn-primary"  style = "min-width: 200px; min-height: 40px; font-size:20px">Update Details</button>
+    
+  </div>-->
+
+    {% endblock %}
+
+    
+    
+   

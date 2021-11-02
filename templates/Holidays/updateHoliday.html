@@ -1,0 +1,32 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    UPDATE HOLIDAY
+{% endblock %}
+
+{% block page %}
+    CHANGE DATES
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+
+    <!--form action="{% url 'register' %}" method="post">-->
+    <form action="{% url 'updateHoliday' %}" method="post">
+        {% csrf_token %}
+        
+        <h4 style="color:darkred; font-weight:bold;">CHANGE DATES</h4><hr><br>
+            
+            <label class="menulabels">{{holiday.holiday}} {{holiday.datefrom.year}}</label><br><br>
+            
+            <input name="fromDate" type="date" value={{holiday.datefrom}}/><br><br>
+
+            <input name="toDate" type="date" value={{holiday.dateto}}/><br><br>
+
+            <input type="hidden" name="id" value={{toChange}} />
+                
+            <button class="btn btn-primary" type="submit" value = "Login">Submit</button> <br> <br>
+            
+    </form>
+    {% endblock %}

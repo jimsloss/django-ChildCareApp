@@ -1,0 +1,154 @@
+{% extends "main_layout.html" %}
+
+{% block title %}   FINAL INVOICE           {% endblock %}
+{% block page %}    INVOICE CONFIRMATION    {% endblock %}
+
+{% block content %}
+
+
+
+<div class="loginbox">
+
+    <form action="{% url 'newInvoice' %}" method="post">
+        {% csrf_token %}
+        
+        <div style="text-align: center;">
+
+        
+            <img src="/media/images/Karens Childcare Logo.jpg" alt="childcare logo" height="100" width="100" style="margin-right:40px; float:right; ">
+            <br><br>
+        </div>
+
+                
+        <h3 style="color:darkred; font-weight:bold; font-family:'Gill Sans'; margin-left:120px;">INVOICE</h3>   <br><hr>
+
+        <div style = "font-size:20px; color: darkblue; font-weight:bold; text-align:left; margin-left:50px; font-family:'Times New Roman'">Parent/Carer :
+
+            <div style="font-size:20px; color: black; display: inline-block; margin-left:5px;  font-weight:normal; font-family:'Times New Roman'">
+                {{ invoice.parentName}}
+               
+                <div style = "display: inline-block; color: darkblue; margin-left:50px; font-weight: bold; font-family:'Times New Roman';">Month :</div>
+               
+                <div style="display: inline-block; color: black; font-weight: normal; margin-left: 5px; font-family: 'Times New Roman'">
+                    {{ invoice.month }} {{ invoice.year }}
+                </div>
+            </div>       
+        </div>
+            <hr>
+
+            <div style="font-size:18px; color: black; margin-left:50px; font-style:italic;  font-family:'Times New Roman'">
+               This invoice covers the period:<br> {{invoice.period}}</div> <hr>
+           
+            
+            <h5 style= "font-size: 20px; color:darkblue; text-align: left; margin-left: 50px; font-weight:bold; font-family: 'Times New Roman' ">
+                Childcare Provision </h5>
+               <br>
+           
+               {% for child in children %}
+           
+               <div style= "text-align: left; margin-left: 60px; font-family: 'Times New Roman'; font-size: 18px;">{{child.firstname}} {{child.surname}}
+                
+                    <div style = "display: inline-block; margin-left: 30px">{{child.dayspermonth}} days  &ensp;@  &ensp;£{{child.childtypefee}}  
+                        per day &emsp;=&ensp; </div>
+                <div style= "display: inline-block; margin-left: 30px;">£{{child.invoicesub}}</div>
+                </div>
+
+                <!--
+                <h6 style="color:black; margin-left: 50px;">W/C : {{ invoice.week2 }} - {{child.totalHours}}.{{child.totalMins}}hrs @ {{child.type}} rate</h6>
+                <h6 style="color:black; margin-left: 50px;">W/C : {{ invoice.week3 }} - {{child.totalHours}}.{{child.totalMins}}hrs @ {{child.type}} rate</h6>
+                <h6 style="color:black; margin-left: 50px;">W/C : {{ invoice.week4 }} - {{child.totalHours}}.{{child.totalMins}}hrs @ {{child.type}} rate</h6>
+                -->
+            {% endfor %}
+            <br>
+            <hr>
+            
+        
+           {% if other == "Yes" %}
+
+            <div style="color:darkblue; font-size: 20px; font-weight:bold; text-align: left; margin-left: 50px;font-family:'Times New Roman';">
+                Other Charges: <br><br>
+                <div style="color:black; font-size: 18px;text-align: left; margin-left: 50px; font-weight:normal;  font-family:'Times New Roman'">
+                    
+                    {% if invoice.latepayment > 0 %}
+                        Late Payment: £ {{ invoice.latepayment }} <br><br>
+                    {% endif %}
+                    
+                    {% if invoice.latepickup > 0 %}
+                        Late Pickup: £ {{ invoice.latepickup }}<br><br>
+                    {% endif %}
+                    
+                    {% if invoice.reason != "" %}
+                        Reason: {{ invoice.reason }}<br><br>
+                    {% else %}
+                        Reason: None Given <br><br>
+                    {% endif %}
+                </div>
+            </div>    
+            
+            <hr>
+
+            {% endif %}
+            
+            <h5 style="color:darkred; font-weight:bold;">Total: {{ invoice.total }}</h5>
+            <h6 style="color:black; font-style:italic;">To be paid before: {{ due }}</h6><hr>
+        
+
+        <!-- holder for data to be passed to next page -->
+        <input type="hidden" name="month" value="{{ invoice.month }}">
+        <input type="hidden" name="year" value="{{ invoice.year }}">
+        <input type="hidden" name="parentName" value="{{ invoice.parentName }}">        
+        
+        <!--{% for child, value in children.items %}-->
+        {% for child in children %}
+
+            <h5 style="color:darkblue; font-weight:bold; text-align: left; padding-left: 10%">{{ child }};</h5><br>
+        {% endfor %}
+           <!-- <table class="table table-border" id="newInvoiceTable" style="width:90%" margin-left:auto;margin-right:auto;>
+                <thead>
+                    <tr >
+                        <th scope="col">Week Commencing </th>
+                        <th scope="col">Hours</th>
+                        <th scope="col">Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>                 <!--editWeekInvoice(request, id, month, year, surname):-->
+               <!--         <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentName%}?name={{ invoice.week1 }}"> {{ invoice.week1 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentName%}?name={{ invoice.week2 }}"> {{ invoice.week2 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentName%}?name={{ invoice.week3 }}"> {{ invoice.week3 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'editWeekInvoice' id=value.0 month=invoice.month year=invoice.year parentname=invoice.parentName%}?name={{ invoice.week4 }}"> {{ invoice.week4 }}</a></td>
+                        <td> {{value.1}}:{{value.2}}</td>
+                        <td> {{value.3}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+        
+        {% endfor %}
+        -->    <br>
+        
+              <input type="hidden" name = "page" value="final">
+              <input type="hidden" name = "update" value="no">
+              <input type="hidden" name = "invoice" value="{{ invoice.id }}">
+              <input type="hidden" name="invoices" value="{{ invoices }}">
+              <input type="hidden" name="children" value="{{ children }}">
+      
+            <button class="btn btn-primary"  style="margin-right: 30px" type="submit" value = "cancel" name="cancel">CANCEL</button> 
+            <button class="btn btn-primary" type="submit" value = "next">FINISH</button> 
+            <br> <br>
+        
+    </form>
+{% endblock %}

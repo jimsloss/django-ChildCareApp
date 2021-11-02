@@ -1,0 +1,39 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    ADD CHILD
+{% endblock %}
+
+{% block page %}
+    NEW CHILD P5
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'newChild5' %}" method="post" >
+        
+        {% csrf_token %}
+        
+        <h4 style="color:darkred; font-weight:bold;">OTHER DETAILS REQUIRED</h4><hr>    
+
+        <h6 style="color: darkblue; font-weight:bold; text-align: left; padding-left: 5%;">MEDICAL INFORMATION</h6><br>
+        <textarea rows="4" cols="50" name="medical" placeholder=" Any Medical information given"></textarea><br><br>
+
+        <h6 style="color: darkblue; font-weight:bold; text-align: left; padding-left: 5%;">DIETRY INFORMATION</h6><br>
+        <textarea rows="4" cols="50" name="dietry" placeholder=" Any Dietry information given"></textarea><br><br>      
+          
+        <input type="hidden" id="page5" name="childID" value={{id}}>
+                  
+        
+        <button class="btn btn-primary" type="submit" value = "cancel" name ="cancel">Cancel</button> 
+        <button class="btn btn-primary" type="submit" value = "submit" name ="submit">Submit</button> <br> <br>
+        
+        <br> <br>
+            
+    </form>
+</div>
+
+
+{% endblock %}

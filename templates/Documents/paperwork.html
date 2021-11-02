@@ -1,0 +1,170 @@
+{% extends "vtabs_layout.html" %}
+
+{% block title %}
+    Documents
+{% endblock %}
+
+{% block page %}
+    Documents
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">This Week</a></li>
+    <li class="nav-item"><a class="nav-link" href="/kids">Kids</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/otherServices">Other Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+
+{% endblock %}
+
+
+{% block tab1 %} Procedures {% endblock %}
+{% block tab2 %} Contracts & Agreements {% endblock %}
+{% block tab3 %} Training {% endblock %}
+{% block tab4 %} Inspection {% endblock %}
+
+
+{% block tab1title %} Procedures {% endblock %}
+{% block tab2title %} Contracts & Agreements {% endblock %}
+{% block tab3title %} Training {% endblock %}
+{% block tab4title %} Inspection {% endblock %}
+
+
+{% block mainphoto %}
+  <div id="childphoto">
+  <img src="/media/images/paperworkImage.png" alt="Paperwork Image" height="465" width="650" style="border:2px solid black; margin-left:10%"></H4>
+  </div>
+{% endblock %}
+
+{% block mainleft %}
+<h4>PACEY links;</h4>
+<ul>
+    <li> <a href="https://www.pacey.org.uk/working-in-childcare/spotlight-on/gdpr-everything-you-need-to-know/">GDPR</a></li>
+    <li> <a href="https://www.pacey.org.uk/working-in-childcare/spotlight-on/safeguarding/">SAFEGUARDING</a></li>
+    <br> Action Points:
+    <br><br><br>
+    <br> Other Notes:
+    <br>
+</ul>
+{% endblock %}
+
+{% block mainmiddle %}
+
+
+{% endblock %}
+
+{% block mainright %}
+<img src="/static/images/no girl photo.png" alt="Photo">
+
+{% endblock %}
+
+
+<!--other tab contents-->
+
+{% block tab2content %}
+
+    <!--left side-->
+
+    {% block tab2left %}
+
+        <ul>
+            <li><h4><a href="../static/documents/extrahours.docx">Extra Hours Request </a></h4></li>
+        </ul>
+        
+        <br> Personal Record Form
+        <br> Termination of Contracts
+        <br> Medication Form
+        <br> Accident Form
+        <br> At a glance Form
+        <br> Fees
+
+    {% endblock %}
+  
+    <!--middle section-->
+  
+    {% block tab2middle %}
+    
+    <h4>Consent Forms</h4>
+    <br> 
+    <br> Medication / Medical Attention
+    <br> Photographs / Recordings
+    <br> ICT / Technology
+    <br> Intimate Personal Care
+    <br> Sleep
+    <br> Transport / Travel
+    <br> Outings
+    <br> Suncream
+    <br> Animals
+    <br> Taxi
+    
+    
+    
+    {% endblock %}
+  
+    <!--right side-->
+  
+    {% block tab2right %}
+    
+    {% endblock %}
+  
+
+
+{% endblock %}
+
+{% block tab3content %}
+{% block tab3left %}
+
+<h1>Karens Baby Massage</h1>
+
+{% endblock %}
+
+{% endblock %}
+
+{% block tab4content %}
+{% block tab4left %}
+    
+<h4>Last Inspection</h4>
+<br> Date:
+<br>
+<br> Name of Inspector:
+<br> 
+<br>
+<br> Action Points:
+<br><br><br>
+<br> Other Notes:
+<br>
+
+
+{% endblock %}
+
+
+{% block tab4middle %}
+
+<h4>  Action Taken</h4>
+<br>  
+<br>  
+<br>  
+<br>  Other issues to raise
+<br>
+
+{% endblock %}
+
+<!--right side-->
+{% block tab4right %}
+
+<h4>Next Inspection</h4>
+<br>Date:
+<br><br>
+
+<h4>Action Points:</h4>
+<br>  
+
+{% endblock %}
+
+
+
+{% endblock %}
+

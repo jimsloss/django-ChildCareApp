@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    flights
+{% endblock %}
+
+{% block page %}
+    Flight ID
+{% endblock %}
+
+{% block menuoptions%} 
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">This Week</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Paperwork</a></li>
+    <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+{% endblock %}
+
+{% block content %}
+    
+    <h1>Flight {{ flight.id }}</h1>
+    <ul>
+        <li>Origin: {{ flight.origin }}</li>
+        <li>Destination: {{ flight.destination }}</li>
+    </ul>
+    
+{% endblock %}

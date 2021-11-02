@@ -1,0 +1,82 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    ADD CHILD
+{% endblock %}
+
+{% block page %}
+    NEW CHILD P3
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'newChild3' %}" method="post">
+        {% csrf_token %}
+        
+            <h4 style="color:darkred; font-weight:bold;">NEW CHILD ATTENDANCE</h4><hr><br>
+            
+            <label class="labels">Attendence Type:</label>
+            <select id="type" name="childtype">
+                <option value="Full Time" selected>Full Time</option>
+                <option value="Full Time Retainer">Full Time Retainer</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Part Time Retainer">Part Time Retainer</option>
+              </select><br><br>
+            
+            <table class="table table-bordered"> 
+                <thead>
+                    <tr>
+                        <th>DAY</th>
+                        <th>START</th>
+                        <th>FINISH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td> 
+                        <td><input name="MonS" type="time" style="width:100px" value="08:00"/></td> 
+                        <td><input name="MonF" type="time" style="width:100px" value="17:00"/></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td> 
+                        <td><input name="TueS" type="time" style="width:100px" value="08:00"/></td> 
+                        <td><input name="TueF" type="time" style="width:100px" value="17:00"/></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td> 
+                        <td><input name="WedS" type="time" style="width:100px" value="08:00"/></td> 
+                        <td><input name="WedF" type="time" style="width:100px" value="17:00"/></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td> 
+                        <td><input name="ThuS" type="time" style="width:100px" value="08:00"/></td> 
+                        <td><input name="ThuF" type="time" style="width:100px" value="17:00"/></td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td> 
+                        <td><input name="FriS" type="time" style="width:100px" value="08:00"/></td> 
+                        <td><input name="FriF" type="time" style="width:100px" value="17:00"/></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td> 
+                        <td><input name="SatS" type="time" style="width:100px" value="09:00"/></td> 
+                        <td><input name="SatF" type="time" style="width:100px" value="13:00"/></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            
+          <input type="hidden" id="page3" name="childID" value={{id}}>
+          
+            
+            <button class="btn btn-primary" type="submit" value = "Cancel" name = "cancel">Cancel</button> 
+            <button class="btn btn-primary" type="submit" value = "Continue" name = "continue">Continue</button> <br> <br>
+            <br> <br>
+            
+    </form>
+</div>
+
+
+{% endblock %}

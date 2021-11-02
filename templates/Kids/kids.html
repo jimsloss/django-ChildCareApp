@@ -1,0 +1,94 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    Kids
+{% endblock %}
+
+{% block page %}
+    Kids
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">This Week</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Documents</a></li>
+    <li class="nav-item"><a class="nav-link" href="/otherServices">Other Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+{% endblock %}
+
+{% block content %}
+
+<br>
+<div style="text-align: center;">
+    <h1> {{message}} </h1>
+</div>
+
+<form action="{% url 'addChild' %}" method="post">
+    {% csrf_token %}
+    
+    <table class="table table-bordered">  <!--class="table table-bordered">-->
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">AGE</th>
+                <th scope="col">GENDER</th>
+                <!-- <th scope="col">ACTIVE</th> -->
+                <th scope="col">TYPE</th>
+                <th scope="col">PARENT</th>
+               <!--<th scope="col">DIETRY</th>
+                <th scope="col">MEDICAL</th>
+                <th scope="col">CONTRACT</th>
+                <th scope="col">AGREEMENTS</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for kid in kids %}
+                {% if kid.active %}
+                <tr>
+                    <td id="idcolumn">{{ kid.id }}</td>
+                    <!--<td><a href="{% url 'childview' %}"> {{ kid.firstname }} {{ kid.surname }}</a></td>-->
+                    <td><a href="{% url 'childview' %}?name={{kid.id}}"> {{ kid.firstname }} {{ kid.surname }}</a></td>
+                    <td>{{ kid.dateofbirth|timesince }}</td>
+                    <td>{{ kid.childgender }}</td>
+                    <!-- <td>{{ kid.active }}</td> -->
+                    <td><a href="{% url 'childview' %}?name={{kid.id}}"> {{ kid.childtype }}</a></td>
+                    <!--<td>{{ kid.parent.firstnane }}</td>-->
+                    <td>{{ kid.parent.firstname }} {{ kid.parent.surname }}</td>
+                    
+                    <!--<td>None</td>
+                    <td>None</td>
+                    <td>Signed</td>
+                    <td>Yes</td>-->
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    
+    <p align ="center">
+            
+        <button class="btn btn-primary" type="submit" name = "addChild" value = "Add" style ="margin:20px;">ADD CHILD</button>
+
+        <button class="btn btn-primary" type="submit" name = "removeChild" value = "Remove" style ="margin:20px;">REMOVE CHILD</button>
+        
+    
+    
+    </p>
+   
+</form>
+    {% endblock %}
+
+    
+
+    
+   
+
+   
+    
+

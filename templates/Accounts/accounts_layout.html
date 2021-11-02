@@ -1,0 +1,141 @@
+{% extends "main_layout.html" %}
+
+<!--These are inherited from main-->
+
+
+{% block title %}
+    
+{% endblock %}
+
+{% block page %}
+    
+{% endblock %}
+
+{% block menuoptions%}
+   
+
+{% endblock %}
+
+{% block content %}
+
+
+<!--from here is vtabs specific-->
+
+ 
+  <!--if used, this will be displayed above the tabs-->
+  {% block subtitle %}
+  
+  {% endblock %}
+
+  <!--text displayed on the tabs themselves-->
+  <div class="tab">
+    <button class="tablinks" onclick="openContent(event, 'Main')" id="defaultOpen">{% block tab1 %}{% endblock %}</button>
+    <button class="tablinks" onclick="openContent(event, 'tab2')" >{% block tab2 %}{% endblock %} </button>
+    <button class="tablinks" onclick="openContent(event, 'tab3')" >{% block tab3 %}{% endblock %}</button>
+    <button class="tablinks" onclick="openContent(event, 'tab4')" >{% block tab4 %}{% endblock %}</button>
+
+  </div>
+
+  <!--if used, this will be on main window, before a tab is clicked on-->
+  {% block mainphoto %}
+  
+  {% endblock %}
+
+
+  <!--the content displayed within each tabs -->
+  
+  <!-- TAB 1 -->
+  <div id="Main" class="tabcontent2">
+    
+    <div class="container">
+    
+      <h3>{% block tab1title %}{% endblock %}</h3> <hr>
+      
+      <!--left side-->
+      <div class="column-left" id="defaultOpen">
+        {% block mainleft %}{% endblock %}
+      </div>
+      
+      <!--middle section-->
+      <div class="column-center">
+        {% block mainmiddle %}{% endblock %}
+      </div>
+      
+      <!--right side-->
+      <div class="column-right">
+        {% block mainright %}{% endblock %}
+      </div>
+   
+    </div>
+    <div class = "row"> <!-- style = "background-color:crimson"> -->
+      <!--update button-->
+       {% block updatebutton %}{% endblock %}
+    </div>
+
+    
+  </div>
+
+ <!-- TAB 2 --> 
+  <div id="tab2" class="tabcontent2"> 
+    
+    <div class="container">
+    
+      <h3>{% block tab2title %}{% endblock %}</h3> <hr>
+
+      <div id="defaultOpen">
+        {% block tab2content %}{% endblock %}
+      </div>
+      
+      
+    </div>
+  </div>
+
+  <!-- TAB 3 -->
+  <div id="tab3" class="tabcontent2">
+    
+    <div class="container">
+    
+      <h3>{% block tab3title %}{% endblock %}</h3> <hr>
+      
+      <div>
+        {% block tab3content %}{% endblock %}
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TAB 4 -->
+  <div id="tab4" class="tabcontent2"> 
+    
+    <div class="container">
+    
+      <h3>{% block tab4title %}{% endblock %}</h3> <hr>
+
+      <!--left side-->
+      <div class="column-left" id="defaultOpen">
+        {% block tab4left %}{% endblock %}
+      </div>
+      
+      <!--middle section-->
+      <div class="column-center">
+        {% block tab4middle %}{% endblock %}
+      </div>
+      
+      <!--right side-->
+      <div class="column-right">
+        {% block tab4right %}{% endblock %}
+      </div>
+   
+    </div>
+  </div>
+ 
+  
+
+
+</body>
+
+
+
+{% endblock %}
+
+

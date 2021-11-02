@@ -1,0 +1,39 @@
+<!-- MAIN LOG IN PAGE SHOWN-->
+
+{% extends "main_layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="loginbox">
+        <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            
+                {% if message %}
+                    <div class = testheader>
+                        <h1>{{message}}</h1><br>
+                    </div>
+                {% endif %}
+
+                <label style="width: 100px;">User Name:</label>
+                <input name="username" type="text" style="width: 200px;"/><br><br>
+                <label style="width: 100px">Password:</label>
+                <input name="password" type="password" style="width: 200px;"/><br>
+                <label style="width: 300px; text-align:right; color:grey;"> forgot password</label><br><br>
+                <!--<input type="submit" value="Login"/>-->
+                    
+                <button class="btn btn-primary" type="submit" value = "Login">Log In</button> <br> <br>
+                <!--<a href="{% url 'register' %}">Lost your password?</a> <br>-->
+                <a href="{% url 'registerview' %}">Register</a>
+                <!--<button class="btn btn-secondary" type="submit" name = "submit" value = "Change Password">Change Password</button><br><br>
+                <button class="btn btn-secondary" type="submit" name = "newuser" value = "New User">New User</button>-->
+
+            
+        </form>
+    </div>
+{% endblock %}

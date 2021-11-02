@@ -1,0 +1,65 @@
+{% extends "main_layout.html" %}
+
+{% block title %}
+    ADD CHILD
+{% endblock %}
+
+{% block page %}
+    NEW CHILD
+{% endblock %}
+
+{% block content %}
+
+<div class="loginbox">
+    <!--WHEN LOG IN BUTTON CLICKED TAKES TO LOGIN ROUTE (KIDS-URLS) -->
+    <form action="{% url 'newChild' %}" method="post" >
+        {% csrf_token %}
+        
+            <h4 style="color:darkred; font-weight:bold;">NEW CHILD REGISTRATION</h4><hr><br>
+            
+            <label class="childLabels">First Name:</label>
+            <input class="childInput" name="firstname" type="text"/>
+
+            <label class="childLabels">Surname:</label>
+            <input class="childInput" name="surname" type="text"/><br><br>
+
+            <label class="childLabels">Date Of Birth:</label>
+            <input class="childInput" name="dob" type="date"/>
+
+            <label class="childLabels">Gender:</label>
+                <select class="childInput" id="childgender" name="childgender">
+                    <option value="Male" selecte>Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select><br><br>
+        
+            <label class="childLabels">Address:</label>
+            <textarea class ="childAddress" id="address" name="address" rows="3"> </textarea><br><br>
+            
+        
+            <label class="childLabels">Photo: </label>
+            <div class= "childAddress">
+                <img src="/media/images/no_boy_photo.png" alt="Default Child Photo" height="150" style="margin-top:5%" >
+               <!-- <input class="childAddress" id="photo" type="file" style="color:transparent;"  name="photo"> -->
+
+                
+                   <!-- <button class="btn btn-primary" type="submit" style="vertical-align: bottom; margin-left: 20px;" 
+                    value = "newPhoto" name ="newPhoto" onclick = "//media//images">Change</button> <br> <br>-->
+                      
+                </div>
+                <!-- <label class="childLabels"  for="myfile">Change:</label> -->
+               <input class="childLabels" type="file" id="newPhoto" name="newPhoto">
+
+            <div font-size = "8px" >(photo location C:\djangoProjects\childcare\media\images)</div><br>
+            
+            <br>
+
+            
+            <button class="btn btn-secondary" type="submit" value = "Cancel" name = "cancel">Cancel</button>
+            <button class="btn btn-primary" type="submit" value = "Continue" name ="continue">Continue</button> <br> <br>
+            
+    </form>
+</div>
+<div align = "right" </div>Back / Skip / Next / Cancel .. buttons?</div>
+
+{% endblock %}

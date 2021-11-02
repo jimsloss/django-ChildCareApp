@@ -1,0 +1,196 @@
+{% extends "vtabs_layout.html" %}
+
+{% block title %}
+    Other Services
+{% endblock %}
+
+{% block page %}
+    Other Services
+{% endblock %}
+
+{% block menuoptions%}
+    <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/thisWeek">This Week</a></li>
+    <li class="nav-item"><a class="nav-link" href="/kids">Kids</a></li>
+    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link" href="/holidays">Holidays</a></li>
+    <li class="nav-item"><a class="nav-link" href="/accounts">Accounts</a></li>
+    <li class="nav-item"><a class="nav-link" href="/paperwork">Documents</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+
+{% endblock %}
+
+
+{% block tab1 %} Wedding Childcare {% endblock %}
+{% block tab2 %} Hotel Sits {% endblock %}
+{% block tab3 %} Baby Massage {% endblock %}
+{% block tab4 %} Baby Yoga {% endblock %}
+
+
+{% block tab1title %} Wedding Childcare {% endblock %}
+{% block tab2title %} Hotel Sits {% endblock %}
+{% block tab3title %} Baby Massage {% endblock %}
+{% block tab4title %} Baby Yoga {% endblock %}
+
+
+{% block mainphoto %}
+  <div id="childphoto">
+  <img src="/media/images/tullyglass.jpg" alt="Tullyglass Image" height="465" width="650" style="border:2px solid black; margin-left:10%"></H4>
+  </div>
+{% endblock %}
+
+{% block mainleft %}
+<h4>Pricing</h4><br>
+<ul>
+    <li> Travel: 50p per mile</li><br>
+    <li> Nanny: £15 per hour each</a></li>
+    <br> Food & Drinks:  £10 each
+    <br><br><br>
+    <br> Other stuff:
+    <br> 1 Nanny covers 3 young 
+    <br> children, or 4 if older
+</ul>
+{% endblock %}
+
+{% block mainmiddle %}
+<h4>Orders</h4>
+<ul>
+    <li> table of ...</li>
+    <li> orders</a></li>
+    <br> etc
+    <br><br><br>
+    <br> Other stuff:
+    <br>
+</ul>
+
+{% endblock %}
+
+{% block mainright %}
+
+<form action="{% url 'newInvoice' %}" method="post">
+    {% csrf_token %}
+    
+    
+    <!-- holder for data to be passed to next page -->
+   <!-- <input type="hidden" name="month" value="{{ month }}">
+    <input type="hidden" name="year" value="{{ year }}">
+    <input type="hidden" name="parentname" value="{{ parentname }}">
+    <input type="hidden" name="children" value="{{ children }}">
+    <input type="hidden" name="invoice" value="{{ invoice.id }}">-->
+
+    
+    <h4 style="color:darkblue; font-weight:bold;">Get Quote</h4>
+    
+   
+    <label style="font-weight:bold; font-size: medium; font-style: italic;">Total Miles</label>
+    <input name="meal" type="textbox" autocomplete="off"/><br><br>
+    
+    <label style="font-weight:bold; font-size: medium; font-style: italic;">Number of Children</label>
+    <input name="meal" type="textbox" autocomplete="off"/><br><br>
+    
+    <label style="font-weight:bold; font-size: medium; font-style: italic;">Number of Hours</label>
+    <input name="meal" type="textbox" autocomplete="off"/><br><br>
+        <br>
+    
+          <input type="hidden" name = "page" value="p3">
+          <input type="hidden" name = "update" value="no">
+
+        
+        <button class="btn btn-primary"  style="margin-right: 30px" type="submit" value = "cancel" name="cancel">CANCEL</button> 
+        <button class="btn btn-primary" type="submit" value = "next">GET QUOTE</button> 
+        <br> <br>
+</form>
+{% endblock %}
+
+
+<!--other tab contents-->
+
+{% block tab2content %}
+
+    <!--left side-->
+
+    {% block tab2left %}
+
+    <h4>Pricing</h4>
+    <ul>
+        <li> pricing 1</li>
+        <li> pricing 2</a></li>
+        <br> etc
+        <br><br><br>
+        <br> Other stuff:
+        <br>
+    </ul>
+            
+
+    {% endblock %}
+  
+    <!--middle section-->
+  
+    {% block tab2middle %}
+    
+    <h4>Orders</h4>
+    <ul>
+        <li> table of ...</li>
+        <li> orders</a></li>
+        <br> etc
+        <br><br><br>
+        <br> Other stuff:
+        <br>
+    </ul>
+        
+    
+    
+    {% endblock %}
+  
+    <!--right side-->
+  
+    {% block tab2right %}
+    <h4>Get Quote</h4>
+    <ul>
+        <li> drop downs</li>
+        <li> text boxes</a></li>
+        <br> etc
+        <br><br><br>
+        <br> Display Quote
+        <br>
+    </ul>
+    
+        
+    {% endblock %}
+  
+
+
+{% endblock %}
+
+{% block tab3content %}
+{% block tab3left %}
+
+<h1>Baby Massage</h1>
+
+{% endblock %}
+
+{% endblock %}
+
+{% block tab4content %}
+{% block tab4left %}
+
+<h1>Baby Yoga</h1>
+    
+
+{% endblock %}
+
+
+{% block tab4middle %}
+
+
+{% endblock %}
+
+<!--right side-->
+{% block tab4right %}
+
+{% endblock %}
+
+
+
+{% endblock %}
+
